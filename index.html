@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>CTC Distribution Research Project</title>
-    <meta name="description"
-          content="Research project, dataset, and report downloads.">
+
+    <meta
+        name="description"
+        content="CTC Distribution Research Project — research report and dataset."
+    >
 
     <style>
+        /* =========================
+           Base
+        ========================= */
+
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0f172a;
+            --navy: #0f172a;
+            --blue: #2563eb;
+            --blue-dark: #1d4ed8;
+            --blue-light: #eff6ff;
             --text: #334155;
             --muted: #64748b;
-            --light: #f8fafc;
             --border: #e2e8f0;
+            --background: #f8fafc;
             --white: #ffffff;
-            --success: #059669;
         }
 
         * {
@@ -40,107 +47,118 @@
                 Helvetica,
                 Arial,
                 sans-serif;
+
             color: var(--text);
-            background: var(--light);
-            line-height: 1.7;
+            background: var(--background);
+            line-height: 1.6;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
+        /* =========================
+           Navigation
+        ========================= */
+
+        nav {
+            height: 68px;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
         }
 
-        .container {
+        .nav-container {
             width: min(1100px, calc(100% - 40px));
             margin: 0 auto;
         }
 
-        /* Navigation */
-
-        nav {
-            background: rgba(255,255,255,.94);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-inner {
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
         .logo {
-            font-size: 1.15rem;
+            color: var(--navy);
+            font-size: 1.1rem;
             font-weight: 800;
-            color: var(--secondary);
+            text-decoration: none;
+            letter-spacing: -0.3px;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 28px;
-            font-size: .95rem;
-            color: var(--muted);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Hero */
+        /* =========================
+           Hero
+        ========================= */
 
         .hero {
+            min-height: calc(100vh - 68px);
+
+            display: flex;
+            align-items: center;
+
+            padding: 70px 0;
+
             background:
                 radial-gradient(
-                    circle at top right,
-                    rgba(37,99,235,.18),
-                    transparent 35%
+                    circle at 85% 15%,
+                    rgba(37, 99, 235, 0.15),
+                    transparent 30%
                 ),
-                linear-gradient(135deg, #eff6ff, #ffffff 65%);
-            padding: 90px 0 85px;
-            border-bottom: 1px solid var(--border);
+                linear-gradient(
+                    135deg,
+                    #eff6ff 0%,
+                    #ffffff 55%,
+                    #f8fafc 100%
+                );
         }
 
-        .hero-content {
-            max-width: 850px;
+        .hero-container {
+            width: min(1100px, calc(100% - 40px));
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 70px;
+            align-items: center;
         }
 
         .badge {
             display: inline-block;
+
+            padding: 7px 14px;
+            margin-bottom: 20px;
+
             background: #dbeafe;
             color: #1d4ed8;
-            padding: 6px 14px;
+
             border-radius: 999px;
-            font-size: .82rem;
-            font-weight: 700;
-            margin-bottom: 20px;
+
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
         }
 
         h1 {
-            color: var(--secondary);
-            font-size: clamp(2.4rem, 6vw, 4.5rem);
-            line-height: 1.08;
-            letter-spacing: -2px;
-            margin-bottom: 22px;
+            color: var(--navy);
+
+            font-size: clamp(
+                2.5rem,
+                5vw,
+                4.4rem
+            );
+
+            line-height: 1.05;
+            letter-spacing: -2.5px;
+
+            margin-bottom: 25px;
         }
 
-        .hero p {
+        .hero-description {
+            max-width: 700px;
+
             color: var(--muted);
-            font-size: 1.15rem;
-            max-width: 720px;
+
+            font-size: 1.12rem;
+            line-height: 1.8;
+
             margin-bottom: 32px;
         }
 
-        .hero-meta {
-            color: var(--muted);
-            font-size: .95rem;
-            margin-top: 18px;
-        }
-
-        /* Buttons */
+        /* =========================
+           Download Buttons
+        ========================= */
 
         .buttons {
             display: flex;
@@ -152,225 +170,242 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 9px;
-            padding: 13px 21px;
-            border-radius: 9px;
-            font-weight: 700;
-            transition: .2s ease;
-            border: 1px solid transparent;
+            gap: 10px;
+
+            min-width: 180px;
+
+            padding: 14px 22px;
+
+            border-radius: 10px;
+
+            font-size: 0.98rem;
+            font-weight: 750;
+
+            text-decoration: none;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
-        .btn-primary {
-            background: var(--primary);
+        .btn-pdf {
             color: white;
-            box-shadow: 0 5px 15px rgba(37,99,235,.22);
+            background: var(--blue);
+
+            box-shadow:
+                0 8px 20px
+                rgba(37, 99, 235, 0.25);
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
+        .btn-pdf:hover {
+            background: var(--blue-dark);
+
+            box-shadow:
+                0 12px 25px
+                rgba(37, 99, 235, 0.32);
         }
 
-        .btn-secondary {
+        .btn-csv {
+            color: var(--navy);
             background: white;
-            color: var(--secondary);
-            border-color: var(--border);
-        }
 
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        /* Main */
-
-        main {
-            padding: 70px 0;
-        }
-
-        section {
-            margin-bottom: 70px;
-            scroll-margin-top: 90px;
-        }
-
-        h2 {
-            color: var(--secondary);
-            font-size: 2rem;
-            margin-bottom: 18px;
-            letter-spacing: -.5px;
-        }
-
-        h3 {
-            color: var(--secondary);
-            margin-bottom: 8px;
-        }
-
-        .section-intro {
-            max-width: 760px;
-            color: var(--muted);
-            margin-bottom: 28px;
-        }
-
-        /* Cards */
-
-        .cards {
-            display: grid;
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--white);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 28px;
-            box-shadow: 0 5px 20px rgba(15,23,42,.04);
+
+            box-shadow:
+                0 5px 15px
+                rgba(15, 23, 42, 0.05);
         }
 
-        .card-icon {
-            width: 45px;
-            height: 45px;
+        .btn-csv:hover {
+            color: var(--blue);
+            border-color: var(--blue);
+        }
+
+        /* =========================
+           Image
+        ========================= */
+
+        .photo-wrapper {
             display: flex;
-            align-items: center;
             justify-content: center;
-            background: #eff6ff;
-            border-radius: 10px;
-            font-size: 1.35rem;
-            margin-bottom: 17px;
         }
 
-        .card p {
+        .photo-card {
+            position: relative;
+
+            width: 320px;
+            padding: 10px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 25px 60px
+                rgba(15, 23, 42, 0.18);
+
+            transform: rotate(1deg);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: rotate(0deg) translateY(-5px);
+
+            box-shadow:
+                0 30px 70px
+                rgba(15, 23, 42, 0.22);
+        }
+
+        .photo-card img {
+            display: block;
+
+            width: 100%;
+            height: auto;
+
+            aspect-ratio: 0.84 / 1;
+
+            object-fit: cover;
+            object-position: center top;
+
+            border-radius: 13px;
+        }
+
+        /* =========================
+           Information Section
+        ========================= */
+
+        .info {
+            padding: 70px 0;
+            background: white;
+            border-top: 1px solid var(--border);
+        }
+
+        .info-container {
+            width: min(900px, calc(100% - 40px));
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .info h2 {
+            color: var(--navy);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .info p {
             color: var(--muted);
-            font-size: .95rem;
-        }
-
-        /* Downloads */
-
-        .download-area {
-            background: var(--secondary);
-            color: white;
-            border-radius: 18px;
-            padding: 42px;
-        }
-
-        .download-area h2 {
-            color: white;
-        }
-
-        .download-area > p {
-            color: #cbd5e1;
             max-width: 700px;
-            margin-bottom: 30px;
+            margin: 0 auto 30px;
         }
 
-        .download-grid {
+        .file-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
+            gap: 20px;
+            text-align: left;
         }
 
-        .download-card {
-            background: rgba(255,255,255,.08);
-            border: 1px solid rgba(255,255,255,.12);
-            border-radius: 13px;
+        .file-card {
             padding: 25px;
-        }
 
-        .download-card h3 {
-            color: white;
-        }
+            background: var(--background);
 
-        .download-card p {
-            color: #cbd5e1;
-            font-size: .92rem;
-            margin-bottom: 18px;
-        }
-
-        .download-card .btn {
-            background: white;
-            color: var(--secondary);
-        }
-
-        .download-card .btn:hover {
-            background: #eff6ff;
-        }
-
-        /* Code */
-
-        .code {
-            background: #0b1120;
-            color: #dbeafe;
-            padding: 18px 20px;
-            border-radius: 9px;
-            overflow-x: auto;
-            font-family: monospace;
-            font-size: .9rem;
-        }
-
-        /* Citation */
-
-        .citation {
-            background: white;
             border: 1px solid var(--border);
-            padding: 25px;
-            border-radius: 12px;
+            border-radius: 14px;
         }
 
-        /* Footer */
+        .file-card-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .file-card h3 {
+            color: var(--navy);
+            margin-bottom: 5px;
+        }
+
+        .file-card p {
+            margin: 0;
+            font-size: 0.92rem;
+        }
+
+        /* =========================
+           Footer
+        ========================= */
 
         footer {
-            background: #020617;
-            color: #94a3b8;
-            padding: 35px 0;
-            font-size: .9rem;
-        }
+            padding: 30px 0;
 
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
+            background: var(--navy);
+            color: #94a3b8;
+
+            text-align: center;
+
+            font-size: 0.9rem;
         }
 
         footer strong {
             color: white;
         }
 
-        /* Responsive */
+        /* =========================
+           Mobile
+        ========================= */
 
-        @media (max-width: 800px) {
-            .cards,
-            .download-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
+        @media (max-width: 850px) {
 
             .hero {
-                padding: 65px 0;
+                padding: 60px 0;
             }
 
-            .download-area {
-                padding: 28px 22px;
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 45px;
+
+                text-align: center;
             }
 
-            .footer-inner {
-                flex-direction: column;
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .photo-wrapper {
+                order: -1;
+            }
+
+            .photo-card {
+                width: 270px;
             }
         }
 
-        @media (max-width: 500px) {
-            .container {
+        @media (max-width: 600px) {
+
+            .nav-container,
+            .hero-container,
+            .info-container {
                 width: min(100% - 28px, 1100px);
             }
 
             h1 {
-                letter-spacing: -1px;
+                font-size: 2.55rem;
+                letter-spacing: -1.5px;
+            }
+
+            .hero-description {
+                font-size: 1rem;
             }
 
             .buttons {
@@ -380,342 +415,187 @@
             .btn {
                 width: 100%;
             }
+
+            .photo-card {
+                width: 240px;
+            }
+
+            .file-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
+
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container nav-inner">
-            <a href="#" class="logo">CTC Research</a>
+    <!-- =========================
+         Simple Header
+    ========================== -->
 
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#results">Results</a>
-                <a href="#downloads">Downloads</a>
-                <a href="#citation">Citation</a>
-            </div>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                CTC Research
+            </a>
         </div>
     </nav>
 
 
- <header class="hero">
-    <div class="container">
+    <!-- =========================
+         Hero
+    ========================== -->
 
-        <div class="hero-content">
+    <header class="hero">
 
-            <span class="badge">RESEARCH PROJECT</span>
+        <div class="hero-container">
 
-            <h1>
-                CTC Distribution Research Project
-            </h1>
+            <!-- Left side -->
+
+            <div class="hero-text">
+
+                <span class="badge">
+                    RESEARCH PROJECT
+                </span>
+
+                <h1>
+                    CTC Distribution
+                    Research Project
+                </h1>
+
+                <p class="hero-description">
+                    Research findings, supporting data, and the
+                    complete project report are available below
+                    for download and further analysis.
+                </p>
+
+
+                <!-- Download buttons -->
+
+                <div class="buttons">
+
+                    <a
+                        href="report.pdf"
+                        download
+                        class="btn btn-pdf"
+                    >
+                        📄
+                        Download PDF
+                    </a>
+
+                    <a
+                        href="data.csv"
+                        download
+                        class="btn btn-csv"
+                    >
+                        📊
+                        Download CSV
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Right side / Photo -->
+
+            <div class="photo-wrapper">
+
+                <div class="photo-card">
+
+                    <img
+                        src="JasonUMD.jpg"
+                        alt="CTC Distribution Research Project"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         File Information
+    ========================== -->
+
+    <section class="info">
+
+        <div class="info-container">
+
+            <h2>
+                Project Files
+            </h2>
 
             <p>
-                Research findings, supporting data, and the complete
-                project report are available below for download and
-                further analysis.
+                Access the research report and the underlying
+                dataset using the download buttons above.
             </p>
 
-            <!-- Profile / Project Image -->
-            <div class="profile-image">
-                <img
-                    src="JasonUMD.jpg"
-                    alt="Research project profile photograph"
-                >
-            </div>
 
-            <!-- Download Buttons -->
-            <div class="buttons">
+            <div class="file-list">
 
-                <a
-                    href="report.pdf"
-                    download
-                    class="btn btn-primary"
-                >
-                    📄 Download PDF
-                </a>
+                <!-- PDF -->
 
-                <a
-                    href="data.csv"
-                    download
-                    class="btn btn-secondary"
-                >
-                    📊 Download CSV
-                </a>
+                <div class="file-card">
+
+                    <div class="file-card-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        Research Report
+                    </h3>
+
+                    <p>
+                        Complete project report in PDF format.
+                    </p>
+
+                </div>
+
+
+                <!-- CSV -->
+
+                <div class="file-card">
+
+                    <div class="file-card-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Research Dataset
+                    </h3>
+
+                    <p>
+                        Data associated with the research project
+                        in CSV format.
+                    </p>
+
+                </div>
 
             </div>
 
         </div>
-    </div>
-</header>
 
+    </section>
 
 
-    <main class="container">
+    <!-- =========================
+         Footer
+    ========================== -->
 
-        <!-- About -->
-        <section id="about">
-
-            <h2>About the Project</h2>
-
-            <p class="section-intro">
-                This page provides access to the research project,
-                underlying dataset, and supporting documentation.
-                Replace this text with your actual project description,
-                abstract, or research objectives.
-            </p>
-
-            <div class="cards">
-
-                <div class="card">
-                    <div class="card-icon">🔬</div>
-
-                    <h3>Research</h3>
-
-                    <p>
-                        Description of the research question,
-                        methodology, and objectives.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">📊</div>
-
-                    <h3>Dataset</h3>
-
-                    <p>
-                        The complete dataset is provided in CSV format
-                        for analysis using Excel, Python, R, or other
-                        software.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">📄</div>
-
-                    <h3>Report</h3>
-
-                    <p>
-                        Download the complete PDF report containing
-                        methodology, results, figures, and conclusions.
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Overview -->
-        <section>
-
-            <h2>Overview</h2>
-
-            <p class="section-intro">
-                Add your project overview here. You can describe the
-                study design, data collection process, analysis
-                methods, and important background information.
-            </p>
-
-            <div class="card">
-
-                <h3>Project Information</h3>
-
-                <p>
-                    This section can contain additional details about
-                    the project, including methodology, data sources,
-                    software used, study limitations, and other
-                    relevant information.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- Results -->
-        <section id="results">
-
-            <h2>Results</h2>
-
-            <p class="section-intro">
-                Add figures, charts, screenshots, tables, or a summary
-                of the primary findings here.
-            </p>
-
-            <div class="cards">
-
-                <div class="card">
-                    <h3>Finding One</h3>
-                    <p>
-                        Replace this with an important result or
-                        observation from the project.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>Finding Two</h3>
-                    <p>
-                        Replace this with another important result
-                        or statistical finding.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>Finding Three</h3>
-                    <p>
-                        Replace this with an additional conclusion
-                        or research finding.
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Downloads -->
-        <section id="downloads">
-
-            <div class="download-area">
-
-                <h2>Downloads</h2>
-
-                <p>
-                    Download the complete research report or the
-                    underlying dataset.
-                </p>
-
-                <div class="download-grid">
-
-                    <!-- PDF DOWNLOAD -->
-
-                    <div class="download-card">
-
-                        <h3>📄 Full Report</h3>
-
-                        <p>
-                            Complete research report in PDF format.
-                        </p>
-
-                        <a
-                            href="report.pdf"
-                            download
-                            class="btn"
-                        >
-                            Download PDF
-                        </a>
-
-                    </div>
-
-
-                    <!-- CSV DOWNLOAD -->
-
-                    <div class="download-card">
-
-                        <h3>📊 Dataset</h3>
-
-                        <p>
-                            Project data in CSV format for analysis
-                            and reuse.
-                        </p>
-
-                        <a
-                            href="data.csv"
-                            download
-                            class="btn"
-                        >
-                            Download CSV
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Data Usage -->
-        <section>
-
-            <h2>How to Use the Data</h2>
-
-            <p class="section-intro">
-                Download the CSV file and open it with your preferred
-                data-analysis software.
-            </p>
-
-            <div class="code">
-                data.csv
-            </div>
-
-        </section>
-
-
-        <!-- Citation -->
-        <section id="citation">
-
-            <h2>Citation</h2>
-
-            <p class="section-intro">
-                If you use this dataset or research in your work,
-                please cite the project.
-            </p>
-
-            <div class="citation">
-                <strong>
-                    Your Name. "CTC Distribution Research Project."
-                </strong>
-                <br>
-                Your Institution, 2026.
-            </div>
-
-        </section>
-
-
-        <!-- Contact -->
-        <section>
-
-            <h2>Contact</h2>
-
-            <p class="section-intro">
-                For questions, collaboration, or additional
-                information, please contact:
-            </p>
-
-            <div class="card">
-                <strong>Your Name</strong><br>
-                Your Institution<br>
-                <a href="mailto:your-email@example.com">
-                    your-email@example.com
-                </a>
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
     <footer>
 
-        <div class="container footer-inner">
+        <strong>
+            CTC Research Project
+        </strong>
 
-            <div>
-                <strong>CTC Research Project</strong>
-                <br>
-                Research · Data · Results
-            </div>
+        <br>
 
-            <div>
-                © 2026 Your Name
-            </div>
-
-        </div>
+        Research · Data · Results
 
     </footer>
 
